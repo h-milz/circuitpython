@@ -2,7 +2,7 @@
 INTERNAL_FLASH_FILESYSTEM = 1
 
 # Internal math library is substantially smaller than toolchain one
-INTERNAL_LIBM = 0
+INTERNAL_LIBM=
 
 # Longints can be implemented as mpz, as longlong, or not
 LONGINT_IMPL = MPZ

@@ -2,7 +2,7 @@
 # parameters that vary based on chip and/or board.
 LD_TEMPLATE_FILE = boards/common.template.ld
 
-INTERNAL_LIBM = 1
+INTERNAL_LIBM=
 
 # Number of USB endpoint pairs.
 USB_NUM_ENDPOINT_PAIRS = 8

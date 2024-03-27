@@ -1,6 +1,6 @@
 LD_FILE = $(FLASH).ld $(CHIP_FAMILY).ld imxrt10xx.ld
 
-INTERNAL_LIBM = 1
+INTERNAL_LIBM=
 
 USB_HIGHSPEED = 1
 
