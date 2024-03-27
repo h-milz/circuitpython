@@ -144,6 +144,11 @@ INC += \
         -I../../supervisor/shared/usb \
         -I$(BUILD)
 
+ifndef INTERNAL_LIBM
+INC += \
+        -isystem sdk/src/rp2_common/pico_double/include
+endif
+
 # Pico specific configuration
 CFLAGS += -DRASPBERRYPI -DPICO_ON_DEVICE=1 -DPICO_NO_BINARY_INFO=0 -DPICO_TIME_DEFAULT_ALARM_POOL_DISABLED=0 -DPICO_DIVIDER_CALL_IDIV0=0 -DPICO_DIVIDER_CALL_LDIV0=0 -DPICO_DIVIDER_HARDWARE=1 -DPICO_DOUBLE_ROM=1 -DPICO_FLOAT_ROM=1 -DPICO_MULTICORE=1 -DPICO_BITS_IN_RAM=0 -DPICO_DIVIDER_IN_RAM=0 -DPICO_DOUBLE_PROPAGATE_NANS=0 -DPICO_DOUBLE_IN_RAM=0 -DPICO_MEM_IN_RAM=0 -DPICO_FLOAT_IN_RAM=0 -DPICO_FLOAT_PROPAGATE_NANS=1 -DPICO_NO_FLASH=0 -DPICO_COPY_TO_RAM=0 -DPICO_DISABLE_SHARED_IRQ_HANDLERS=0 -DPICO_NO_BI_BOOTSEL_VIA_DOUBLE_RESET=0 -DDVI_1BPP_BIT_REVERSE=0
 OPTIMIZATION_FLAGS ?= -O3
@@ -233,6 +238,13 @@ SRC_SDK := \
 	src/rp2_common/pico_stdlib/stdlib.c \
 	src/rp2_common/pico_unique_id/unique_id.c \
 	$(SRC_SDK_CYW43) \
+
+
+ifndef INTERNAL_LIBM
+SRC_SDK += \
+    src/rp2_common/pico_double/double_math.c
+endif
+
 
 SRC_SDK := $(addprefix sdk/, $(SRC_SDK))
 $(patsubst %.c,$(BUILD)/%.o,$(SRC_SDK) $(SRC_CYW43)): CFLAGS += -Wno-missing-prototypes -Wno-undef -Wno-unused-function -Wno-nested-externs -Wno-strict-prototypes -Wno-double-promotion -Wno-sign-compare -Wno-unused-variable -Wno-strict-overflow -Ilib/cyw43-driver

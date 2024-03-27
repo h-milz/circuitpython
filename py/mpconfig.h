@@ -830,7 +830,7 @@ typedef long long mp_longint_impl_t;
 #define MICROPY_FLOAT_IMPL_DOUBLE (2)
 
 #ifndef MICROPY_FLOAT_IMPL
-#define MICROPY_FLOAT_IMPL (MICROPY_FLOAT_IMPL_DOUBLE)
+#define MICROPY_FLOAT_IMPL (MICROPY_FLOAT_IMPL_FLOAT)
 #endif
 
 #if MICROPY_FLOAT_IMPL == MICROPY_FLOAT_IMPL_FLOAT
@@ -1077,9 +1077,8 @@ typedef double mp_float_t;
 
 // Whether str object is proper unicode
 #ifndef MICROPY_PY_BUILTINS_STR_UNICODE
-#define MICROPY_PY_BUILTINS_STR_UNICODE (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_EXTRA_FEATURES)
+#define MICROPY_PY_BUILTINS_STR_UNICODE (0) // (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_EXTRA_FEATURES)
 #endif
-#undef MICROPY_PY_BUILTINS_STR_UNICODE // for the block cursor extension
 
 // Whether to check for valid UTF-8 when converting bytes to str
 #ifndef MICROPY_PY_BUILTINS_STR_UNICODE_CHECK
@@ -1347,12 +1346,12 @@ typedef double mp_float_t;
 
 // Whether to provide "math" module
 #ifndef MICROPY_PY_MATH
-#define MICROPY_PY_MATH (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_CORE_FEATURES)
+#define MICROPY_PY_MATH (1) // (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_CORE_FEATURES)
 #endif
 
 // Whether to provide all math module constants (Python 3.5+), or just pi and e.
 #ifndef MICROPY_PY_MATH_CONSTANTS
-#define MICROPY_PY_MATH_CONSTANTS (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_EXTRA_FEATURES)
+#define MICROPY_PY_MATH_CONSTANTS (1) // (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_EXTRA_FEATURES)
 #endif
 
 // Whether to provide special math functions: math.{erf,erfc,gamma,lgamma}

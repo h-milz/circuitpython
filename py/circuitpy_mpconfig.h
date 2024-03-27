@@ -40,7 +40,7 @@
 
 // REPR_C encodes qstrs, 31-bit ints, and 30-bit floats in a single 32-bit word.
 #ifndef MICROPY_OBJ_REPR
-#define MICROPY_OBJ_REPR            (MICROPY_OBJ_REPR_A)   // for double float
+#define MICROPY_OBJ_REPR            (MICROPY_OBJ_REPR_A)   // hmilz: for double float
 #endif
 
 // options to control how MicroPython is built
@@ -89,7 +89,7 @@ extern void common_hal_mcu_enable_interrupts(void);
 #define MICROPY_EPOCH_IS_1970            (1)
 #define MICROPY_ERROR_REPORTING          (CIRCUITPY_FULL_BUILD ? MICROPY_ERROR_REPORTING_NORMAL : MICROPY_ERROR_REPORTING_TERSE)
 #define MICROPY_FLOAT_HIGH_QUALITY_HASH  (0)
-#define MICROPY_FLOAT_IMPL               (MICROPY_FLOAT_IMPL_FLOAT)
+#define MICROPY_FLOAT_IMPL               (MICROPY_FLOAT_IMPL_DOUBLE)
 #define MICROPY_GC_ALLOC_THRESHOLD       (0)
 #define MICROPY_GC_SPLIT_HEAP            (1)
 #define MICROPY_GC_SPLIT_HEAP_AUTO       (1)
@@ -129,7 +129,7 @@ extern void common_hal_mcu_enable_interrupts(void);
 #define MICROPY_PY_BUILTINS_SLICE        (1)
 #define MICROPY_PY_BUILTINS_SLICE_ATTRS  (1)
 #define MICROPY_PY_BUILTINS_SLICE_INDICES (1)
-#define MICROPY_PY_BUILTINS_STR_UNICODE  (1)
+#define MICROPY_PY_BUILTINS_STR_UNICODE  (0)
 
 #define MICROPY_PY_BINASCII             (CIRCUITPY_BINASCII)
 #define MICROPY_PY_BINASCII_CRC32       (CIRCUITPY_BINASCII && CIRCUITPY_ZLIB)
@@ -146,7 +146,7 @@ extern void common_hal_mcu_enable_interrupts(void);
 #define MICROPY_PY_IO_IOBASE             (CIRCUITPY_IO_IOBASE)
 // In extmod
 #define MICROPY_PY_JSON                 (CIRCUITPY_JSON)
-#define MICROPY_PY_MATH                  (0)
+#define MICROPY_PY_MATH                  (1)
 #define MICROPY_PY_MICROPYTHON_MEM_INFO  (0)
 // Supplanted by shared-bindings/random
 #define MICROPY_PY_RANDOM               (0)
