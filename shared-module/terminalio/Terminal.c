@@ -98,7 +98,7 @@ size_t common_hal_terminalio_terminal_write(terminalio_terminal_obj_t *self, con
             continue;
         }
         // Always handle ASCII.
-        if (c < 128) {
+        if (c < 224) {
             if (c >= 0x20 && c <= 0x7e) {
                 uint8_t tile_index = fontio_builtinfont_get_glyph_index(self->font, c);
                 common_hal_displayio_tilegrid_set_tile(self->scroll_area, self->cursor_x, self->cursor_y, tile_index);

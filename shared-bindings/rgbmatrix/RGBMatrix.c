@@ -390,7 +390,11 @@ STATIC void rgbmatrix_rgbmatrix_deinit_proto(mp_obj_t self_in) {
     common_hal_rgbmatrix_rgbmatrix_deinit(self_in);
 }
 
+#if MICROPY_FLOAT_IMPL == MICROPY_FLOAT_IMPL_DOUBLE
+STATIC mp_float_t rgbmatrix_rgbmatrix_get_brightness_proto(mp_obj_t self_in) {
+#else
 STATIC float rgbmatrix_rgbmatrix_get_brightness_proto(mp_obj_t self_in) {
+#endif		
     return common_hal_rgbmatrix_rgbmatrix_get_paused(self_in) ? 0.0f : 1.0f;
 }
 
