@@ -28,14 +28,11 @@
 # Common compile warnings.
 
 BASE_CFLAGS = \
-	-fsingle-precision-constant \
 	-fno-strict-aliasing \
-	-Wdouble-promotion \
 	-Wimplicit-fallthrough=2 \
 	-Wno-endif-labels \
 	-Wstrict-prototypes \
 	-Werror-implicit-function-declaration \
-	-Wfloat-equal \
 	-Wundef \
 	-Wshadow \
 	-Wwrite-strings \
@@ -53,6 +50,18 @@ BASE_CFLAGS = \
 	-DCIRCUITPY_SAFE_RESTART_WORD=0xDEADBEEF \
 	-DCIRCUITPY_BOARD_ID="\"$(BOARD)\"" \
 	--param max-inline-insns-single=500
+
+# only if we do not build _DOUBLE
+# and even then ... 
+# by the way this makes all these hardcoded f's redundant
+# they should all be thrown out the window. 
+ifdef INTERNAL_LIBM 
+BASE_CFLAGS += \
+	-fsingle-precision-constant \
+	-Wdouble-promotion \
+	-Wfloat-equal 
+endif
+
 
 #        Use these flags to debug build times and header includes.
 #        -ftime-report

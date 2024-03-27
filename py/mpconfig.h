@@ -578,7 +578,7 @@
 
 // Whether math.factorial is large, fast and recursive (1) or small and slow (0).
 #ifndef MICROPY_OPT_MATH_FACTORIAL
-#define MICROPY_OPT_MATH_FACTORIAL (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_EXTRA_FEATURES)
+#define MICROPY_OPT_MATH_FACTORIAL (1) // (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_EXTRA_FEATURES)
 #endif
 
 /*****************************************************************************/
@@ -830,7 +830,7 @@ typedef long long mp_longint_impl_t;
 #define MICROPY_FLOAT_IMPL_DOUBLE (2)
 
 #ifndef MICROPY_FLOAT_IMPL
-#define MICROPY_FLOAT_IMPL (MICROPY_FLOAT_IMPL_NONE)
+#define MICROPY_FLOAT_IMPL (MICROPY_FLOAT_IMPL_DOUBLE)
 #endif
 
 #if MICROPY_FLOAT_IMPL == MICROPY_FLOAT_IMPL_FLOAT
@@ -1079,6 +1079,7 @@ typedef double mp_float_t;
 #ifndef MICROPY_PY_BUILTINS_STR_UNICODE
 #define MICROPY_PY_BUILTINS_STR_UNICODE (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_EXTRA_FEATURES)
 #endif
+#undef MICROPY_PY_BUILTINS_STR_UNICODE // for the block cursor extension
 
 // Whether to check for valid UTF-8 when converting bytes to str
 #ifndef MICROPY_PY_BUILTINS_STR_UNICODE_CHECK
@@ -1356,17 +1357,17 @@ typedef double mp_float_t;
 
 // Whether to provide special math functions: math.{erf,erfc,gamma,lgamma}
 #ifndef MICROPY_PY_MATH_SPECIAL_FUNCTIONS
-#define MICROPY_PY_MATH_SPECIAL_FUNCTIONS (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_EXTRA_FEATURES)
+#define MICROPY_PY_MATH_SPECIAL_FUNCTIONS (1) // (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_EXTRA_FEATURES)
 #endif
 
 // Whether to provide math.factorial function
 #ifndef MICROPY_PY_MATH_FACTORIAL
-#define MICROPY_PY_MATH_FACTORIAL (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_EXTRA_FEATURES)
+#define MICROPY_PY_MATH_FACTORIAL (1) // (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_EXTRA_FEATURES)
 #endif
 
 // Whether to provide math.isclose function
 #ifndef MICROPY_PY_MATH_ISCLOSE
-#define MICROPY_PY_MATH_ISCLOSE (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_EXTRA_FEATURES)
+#define MICROPY_PY_MATH_ISCLOSE (1) // (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_EXTRA_FEATURES)
 #endif
 
 // Whether to provide fix for atan2 Inf handling.
@@ -1391,7 +1392,7 @@ typedef double mp_float_t;
 
 // Whether to provide "cmath" module
 #ifndef MICROPY_PY_CMATH
-#define MICROPY_PY_CMATH (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_EXTRA_FEATURES)
+#define MICROPY_PY_CMATH (1) // (MICROPY_CONFIG_ROM_LEVEL_AT_LEAST_EXTRA_FEATURES)
 #endif
 
 // Whether to provide "micropython" module

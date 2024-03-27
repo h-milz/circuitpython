@@ -40,7 +40,7 @@
 
 // REPR_C encodes qstrs, 31-bit ints, and 30-bit floats in a single 32-bit word.
 #ifndef MICROPY_OBJ_REPR
-#define MICROPY_OBJ_REPR            (MICROPY_OBJ_REPR_C)
+#define MICROPY_OBJ_REPR            (MICROPY_OBJ_REPR_A)   // for double float
 #endif
 
 // options to control how MicroPython is built
@@ -370,7 +370,7 @@ extern const struct _mp_obj_module_t nvm_module;
 #endif
 
 #ifndef ULAB_SUPPORTS_COMPLEX
-#define ULAB_SUPPORTS_COMPLEX (0)
+#define ULAB_SUPPORTS_COMPLEX (1)
 #endif
 
 #if CIRCUITPY_ULAB
