@@ -43,7 +43,7 @@ mp_obj_t common_hal_fontio_builtinfont_get_bounding_box(const fontio_builtinfont
 }
 
 uint8_t fontio_builtinfont_get_glyph_index(const fontio_builtinfont_t *self, mp_uint_t codepoint) {
-    if (codepoint >= 0x20 && codepoint <= 0x7e) {
+    if (codepoint >= 0x20 && codepoint <= 0xde) {
         return codepoint - 0x20;
     }
     // Do a linear search of the mapping for unicode.
@@ -53,7 +53,7 @@ uint8_t fontio_builtinfont_get_glyph_index(const fontio_builtinfont_t *self, mp_
         unichar potential_c = utf8_get_char(j);
         j = utf8_next_char(j);
         if (codepoint == potential_c) {
-            return 0x7f - 0x20 + k;
+            return 0xdf - 0x20 + k;
         }
         k++;
     }
