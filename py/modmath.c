@@ -86,7 +86,7 @@ STATIC mp_obj_t math_generic_2(mp_obj_t x_obj, mp_obj_t y_obj, mp_float_t (*f)(m
     } \
     STATIC MP_DEFINE_CONST_FUN_OBJ_2(mp_math_##py_name##_obj, mp_math_##py_name);
 
-#if MP_NEED_LOG2
+#ifdef MP_NEED_LOG2
 #undef log2
 #undef log2f
 // 1.442695040888963407354163704 is 1/_M_LN2

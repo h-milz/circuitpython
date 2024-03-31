@@ -91,3 +91,6 @@ TAGS
 
 # Uncrustify formatting
 *.uncrustify
+
+# local stuff
+**/compile.out

@@ -64,6 +64,18 @@ STATIC const uint8_t attr[] = {
     AT_PR, AT_LX, AT_LX, AT_LX, AT_LX, AT_LX, AT_LX, AT_LO,
     AT_LO, AT_LO, AT_LO, AT_LO, AT_LO, AT_LO, AT_LO, AT_LO,
     AT_LO, AT_LO, AT_LO, AT_LO, AT_LO, AT_LO, AT_LO, AT_LO,
+    AT_LO, AT_LO, AT_LO, AT_PR, AT_PR, AT_PR, AT_PR, 0,
+    AT_SP, AT_PR, AT_PR, AT_PR, AT_PR, AT_PR, AT_PR, AT_PR,
+    AT_PR, AT_PR, AT_PR, AT_PR, AT_PR, AT_PR, AT_PR, AT_PR,
+    AT_DI, AT_DI, AT_DI, AT_DI, AT_DI, AT_DI, AT_DI, AT_DI,
+    AT_DI, AT_DI, AT_PR, AT_PR, AT_PR, AT_PR, AT_PR, AT_PR,
+    AT_PR, AT_UX, AT_UX, AT_UX, AT_UX, AT_UX, AT_UX, AT_UP,
+    AT_UP, AT_UP, AT_UP, AT_UP, AT_UP, AT_UP, AT_UP, AT_UP,
+    AT_UP, AT_UP, AT_UP, AT_UP, AT_UP, AT_UP, AT_UP, AT_UP,
+    AT_UP, AT_UP, AT_UP, AT_PR, AT_PR, AT_PR, AT_PR, AT_PR,
+    AT_PR, AT_LX, AT_LX, AT_LX, AT_LX, AT_LX, AT_LX, AT_LO,
+    AT_LO, AT_LO, AT_LO, AT_LO, AT_LO, AT_LO, AT_LO, AT_LO,
+    AT_LO, AT_LO, AT_LO, AT_LO, AT_LO, AT_LO, AT_LO, AT_LO,
     AT_LO, AT_LO, AT_LO, AT_PR, AT_PR, AT_PR, AT_PR, 0
 };
 
@@ -117,41 +129,41 @@ size_t utf8_charlen(const byte *str, size_t len) {
 
 // Be aware: These unichar_is* functions are actually ASCII-only!
 bool unichar_isspace(unichar c) {
-    return c < 128 && (attr[c] & FL_SPACE) != 0;
+    return c < 224 && (attr[c] & FL_SPACE) != 0;
 }
 
 bool unichar_isalpha(unichar c) {
-    return c < 128 && (attr[c] & FL_ALPHA) != 0;
+    return c < 224 && (attr[c] & FL_ALPHA) != 0;
 }
 
 /* unused
 bool unichar_isprint(unichar c) {
-    return c < 128 && (attr[c] & FL_PRINT) != 0;
+    return c < 224 && (attr[c] & FL_PRINT) != 0;
 }
 */
 
 bool unichar_isdigit(unichar c) {
-    return c < 128 && (attr[c] & FL_DIGIT) != 0;
+    return c < 224 && (attr[c] & FL_DIGIT) != 0;
 }
 
 bool unichar_isxdigit(unichar c) {
-    return c < 128 && (attr[c] & FL_XDIGIT) != 0;
+    return c < 224 && (attr[c] & FL_XDIGIT) != 0;
 }
 
 bool unichar_isident(unichar c) {
-    return c < 128 && ((attr[c] & (FL_ALPHA | FL_DIGIT)) != 0 || c == '_');
+    return c < 224 && ((attr[c] & (FL_ALPHA | FL_DIGIT)) != 0 || c == '_');
 }
 
 bool unichar_isalnum(unichar c) {
-    return c < 128 && ((attr[c] & (FL_ALPHA | FL_DIGIT)) != 0);
+    return c < 224 && ((attr[c] & (FL_ALPHA | FL_DIGIT)) != 0);
 }
 
 bool unichar_isupper(unichar c) {
-    return c < 128 && (attr[c] & FL_UPPER) != 0;
+    return c < 224 && (attr[c] & FL_UPPER) != 0;
 }
 
 bool unichar_islower(unichar c) {
-    return c < 128 && (attr[c] & FL_LOWER) != 0;
+    return c < 224 && (attr[c] & FL_LOWER) != 0;
 }
 
 unichar unichar_tolower(unichar c) {

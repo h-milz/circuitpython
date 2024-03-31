@@ -286,7 +286,7 @@ displayio_tilegrid_t supervisor_terminal_scroll_area_text_grid = {{
     .in_group = true
 }};
 """.format(
-        len(all_characters), tile_x, tile_y
+        len(all_characters) * 2, tile_x, tile_y
     )
 )
 
@@ -316,7 +316,7 @@ displayio_tilegrid_t supervisor_terminal_status_bar_text_grid = {{
     .in_group = true
 }};
 """.format(
-        len(all_characters), tile_x, tile_y
+        len(all_characters) * 2, tile_x, tile_y
     )
 )
 
@@ -324,14 +324,19 @@ c_file.write(
     """\
 const uint32_t font_bitmap_data[{}] = {{
 """.format(
-        bytes_per_row * tile_y // 4
+        bytes_per_row * tile_y // 4 * 2
     )
 )
 
+# for each 18 words written, add another 18 words with inverted data. 
+extras = ""
 for i, word in enumerate(struct.iter_unpack(">I", b)):
     c_file.write("0x{:08x}, ".format(word[0]))
+    extras += "0x{:08x}, ".format(word[0] ^ 0xFFFFFFFF)
     if (i + 1) % (bytes_per_row // 4) == 0:
-        c_file.write("\n")
+        extras += "\n"
+        c_file.write(extras)
+        extras = ""
 
 c_file.write(
     """\
@@ -354,7 +359,7 @@ displayio_bitmap_t supervisor_terminal_font_bitmap = {{
     .read_only = true
 }};
 """.format(
-        len(all_characters) * tile_x, tile_y, bytes_per_row / 4
+        2 * len(all_characters) * tile_x, tile_y, bytes_per_row / 4 * 2
     )
 )
 
