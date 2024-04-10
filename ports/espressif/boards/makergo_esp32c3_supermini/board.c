@@ -3,7 +3,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Michael Schroeder
+ * Copyright (c) 2020 Scott Shawcroft for Adafruit Industries
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,6 @@
  * THE SOFTWARE.
  */
 
-#ifndef MICROPY_INCLUDED_BROADCOM_COMMON_HAL_SUPERVISOR_RUNTIME_H
-#define MICROPY_INCLUDED_BROADCOM_COMMON_HAL_SUPERVISOR_RUNTIME_H
+#include "supervisor/board.h"
 
-#include "py/obj.h"
-
-typedef struct {
-    mp_obj_base_t base;
-    // Stores no state currently.
-} super_runtime_obj_t;
-
-#endif // MICROPY_INCLUDED_BROADCOM_COMMON_HAL_SUPERVISOR_RUNTIME_H
+// Use the MP_WEAK supervisor/shared/board.c versions of routines not defined here.

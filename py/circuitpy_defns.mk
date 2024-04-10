@@ -487,6 +487,7 @@ SRC_COMMON_HAL_ALL = \
 	dotclockframebuffer/DotClockFramebuffer.c \
 	dotclockframebuffer/__init__.c \
 	dualbank/__init__.c \
+	floppyio/__init__.c \
 	frequencyio/FrequencyIn.c \
 	frequencyio/__init__.c \
 	imagecapture/ParallelImageCapture.c \
@@ -528,8 +529,6 @@ SRC_COMMON_HAL_ALL = \
 	socketpool/__init__.c \
 	socketpool/SocketPool.c \
 	socketpool/Socket.c \
-	supervisor/Runtime.c \
-	supervisor/__init__.c \
 	usb_host/__init__.c \
 	usb_host/Port.c \
 	watchdog/WatchDogMode.c \
@@ -581,6 +580,7 @@ $(filter $(SRC_PATTERNS), \
 	qrio/PixelPolicy.c \
 	qrio/QRInfo.c \
 	supervisor/RunReason.c \
+	supervisor/Runtime.c \
 	supervisor/StatusBar.c \
 	wifi/AuthMode.c \
 	wifi/Packet.c \

@@ -1,9 +1,9 @@
 /*
- * This file is part of Adafruit for EFR32 project
+ * This file is part of the MicroPython project, http://micropython.org/
  *
  * The MIT License (MIT)
  *
- * Copyright 2023 Silicon Laboratories Inc. www.silabs.com
+ * Copyright (c) 2019 Scott Shawcroft for Adafruit Industries
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,15 +24,19 @@
  * THE SOFTWARE.
  */
 
-#include "py/obj.h"
+// Board setup
 
-#include "shared-bindings/supervisor/__init__.h"
-#include "shared-bindings/supervisor/Runtime.h"
+#define MICROPY_HW_BOARD_NAME       "Maker Go ESP32C3 Supermini"
+#define MICROPY_HW_MCU_NAME         "ESP32-C3"
 
-// The singleton supervisor.Runtime object, bound to supervisor.runtime
-// It currently only has properties, and no state.
-const super_runtime_obj_t common_hal_supervisor_runtime_obj = {
-    .base = {
-        .type = &supervisor_runtime_type,
-    },
-};
+// Status LED
+#define MICROPY_HW_LED_STATUS (&pin_GPIO8)
+
+#define CIRCUITPY_BOARD_UART        (1)
+#define CIRCUITPY_BOARD_UART_PIN    {{.tx = &pin_GPIO21, .rx = &pin_GPIO20}}
+
+#define CIRCUITPY_BOARD_I2C         (1)
+#define CIRCUITPY_BOARD_I2C_PIN     {{.scl = &pin_GPIO9, .sda = &pin_GPIO8}}
+
+#define CIRCUITPY_BOARD_SPI         (1)
+#define CIRCUITPY_BOARD_SPI_PIN     {{.clock = &pin_GPIO4, .mosi = &pin_GPIO6, .miso = &pin_GPIO5}}
